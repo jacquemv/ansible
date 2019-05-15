@@ -1,0 +1,13 @@
+# update all packages
+- name: update fedora
+  dnf:
+    name: "*"
+    state: latest
+    
+- name: install basic packages
+  dnf:
+    name:
+      - nano
+      - gnome-tweak-tool
+    state: latest
+        

@@ -1,0 +1,9 @@
+- name: install latex packages
+  dnf:
+    name:
+      - texlive
+      - texlive-lastpage
+      - texlive-ulem
+      - texmaker
+    state: latest
+

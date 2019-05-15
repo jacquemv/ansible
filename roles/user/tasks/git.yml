@@ -1,0 +1,13 @@
+# modify file ~/.gitconfig
+- name: set user git config
+  git_config:
+    name: "{{ item.name }}"
+    value: "{{ item.value }}"
+    scope: global
+  with_items:
+    - {name: user.name, value: "{{ user_name }}"}
+    - {name: user.email, value: "{{ user_email }}"}
+    - {name: alias.ci, value: commit}
+    - {name: alias.co, value: checkout}
+    - {name: alias.st, value: status}
+

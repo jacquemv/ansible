@@ -1,0 +1,9 @@
+- name: install basic packages
+  dnf:
+    name:
+      - ImageMagick
+      - gimp
+      - ffmpeg
+      - ffmpeg-devel
+    state: latest
+        

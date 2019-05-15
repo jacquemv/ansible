@@ -1,0 +1,16 @@
+---
+- hosts: local
+  become: true
+  
+  vars_prompt:
+    - name: "user_login"
+      prompt: "user login name"
+      private: no
+  
+  tasks:
+    - name: delete user
+      user:
+        name: "{{ user_login }}"
+        state: absent
+        remove: yes
+

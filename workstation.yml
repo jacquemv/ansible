@@ -1,0 +1,18 @@
+---
+- hosts: local
+  become: yes
+
+  tasks:
+    - include_role:
+        name: workstation
+      vars:
+        anaconda_version: 2019.03
+    
+    # this assumes that an account 'jacquem' has been created
+    - include_role:
+        name: user
+      vars:
+        user_login: jacquem
+        user_name: "Vincent Jacquemet"
+        user_email: "vincent.jacquemet@umontreal.ca"
+

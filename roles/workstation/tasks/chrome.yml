@@ -1,0 +1,9 @@
+- name: install google chrome keys
+  rpm_key:
+    state: present
+    key: https://dl-ssl.google.com/linux/linux_signing_key.pub
+
+- name: install google chrome
+  dnf:
+    name: https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+    state: latest

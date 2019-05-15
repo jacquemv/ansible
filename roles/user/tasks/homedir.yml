@@ -1,0 +1,32 @@
+
+- name: create directories
+  file:
+    path: "/home/{{ user_login }}/{{ item }}"
+    state: directory
+  with_items:
+    - bin
+    - python
+
+- name: remove local user-dirs
+  file:
+    path: /home/{{ user_login }}/.config/user-dirs.dirs
+    state: absent
+
+- name: remove default directories
+  file:
+    path: "/home/{{ user_login }}/{{ item }}"
+    state: absent
+  with_items:
+    - Documents
+    - Downloads
+    - Music
+    - Public
+    - Videos
+    - Desktop
+    - Pictures
+    - Templates 
+
+- name: update user-dirs
+  command: xdg-user-dirs-update
+      
+

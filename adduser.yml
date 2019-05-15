@@ -1,0 +1,25 @@
+---
+- hosts: local
+  become: true
+  
+  vars_prompt:
+    - name: "user_login"
+      prompt: "user login name"
+      private: no
+    - name: "user_name"
+      prompt: "user full name"
+      private: no
+    - name: "user_email"
+      prompt: "email address"
+      private: no
+  
+  tasks:
+    - name: create user
+      user:
+        name: "{{ user_login }}"
+        comment: "{{ user_name }}"
+        password: ""
+    
+    - include_role:
+        name: user
+

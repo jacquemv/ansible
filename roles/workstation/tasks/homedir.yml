@@ -1,0 +1,17 @@
+- name: modify default user-dirs names
+  copy:
+    dest: /etc/xdg/user-dirs.defaults
+    content: |
+      # Default settings for user directories
+      #
+      # The values are relative pathnames from the home directory and
+      # will be translated on a per-path-element basis into the users locale
+      DESKTOP=documents/desktop
+      DOWNLOAD=downloads
+      TEMPLATES=documents/templates
+      PUBLICSHARE=documents/public
+      DOCUMENTS=documents
+      MUSIC=documents/music
+      PICTURES=documents/pictures
+      VIDEOS=documents/videos
+

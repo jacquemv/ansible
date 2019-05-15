@@ -1,0 +1,28 @@
+- name: download anaconda
+  get_url:
+    url: "{{ anaconda_url }}"
+    dest: "{{ anaconda_path }}"
+  register: anaconda_download_anaconda
+  until: anaconda_download_anaconda is succeeded
+  retries: 3
+
+- name: install anaconda
+  command: bash {{ anaconda_path }} -b -p {{ anaconda_prefix }}
+  args:
+    creates: "{{ anaconda_prefix }}"
+
+- name: install python packages
+  pip:
+    name:
+      - snakeviz
+      - pyopengl
+    executable: "{{ anaconda_prefix }}/bin/pip"
+      
+    
+
+
+
+
+
+
+
