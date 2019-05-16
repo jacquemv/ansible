@@ -1,3 +1,8 @@
+- name: create download directory
+  file: 
+    path: "{{ anaconda_download_dest }}"
+    state: directory
+
 - name: download anaconda
   get_url:
     url: "{{ anaconda_url }}"
