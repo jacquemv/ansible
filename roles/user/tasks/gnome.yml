@@ -1,0 +1,57 @@
+
+# To find the name of dconf keys:
+#
+# 1) run `dconf watch /`
+# 2) open gnome-tweak-tools
+# 3) make changes in the GUI
+# 4) watch the changes reported by dconf
+
+
+# Windows
+- name: Add window buttons
+  dconf:
+    key: /org/gnome/desktop/wm/preferences/button-layout
+    value: "'appmenu:minimize,maximize,close'"
+
+# Install extensions
+- name: Download GNOME Shell extensions
+  get_url:
+    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=8658"
+    dest: "/tmp/scroll-workspaces@gfxmonk.net.zip"
+
+- name: Create GNOME extension directories
+  file:
+    path: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
+    state: directory
+
+- name: Unzip GNOME extensions
+  unarchive:
+    src: "/tmp/scroll-workspaces@gfxmonk.net.zip"
+    dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
+    creates: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net/metadata.json"
+    remote_src: yes
+
+# Configure extensions
+- name: Enable shell extensions
+  dconf:
+    key: /org/gnome/shell/enabled-extensions
+    value: "['launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'scroll-workspaces@gfxmonk.net']"
+
+- name: Configure extensions
+  dconf:
+    key: /org/gnome/shell/extensions/net/gfxmonk/scroll-workspaces/indicator
+    value: "true"
+
+# Workspaces
+- name: Static workspaces
+  dconf:
+    key: /org/gnome/mutter/dynamic-workspaces
+    value: "false"
+    
+- name: Set number of workspaces
+  dconf:
+    key: /org/gnome/desktop/wm/preferences/num-workspaces
+    value: "4"
+
+
+

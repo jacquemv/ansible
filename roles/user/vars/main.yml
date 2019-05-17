@@ -1,0 +1,5 @@
+# directory for gnome shell extensions
+path_extensions: "/home/{{ user_login }}/.local/share/gnome-shell/extensions"
+
+# gnome extension website
+gnome_url: https://extensions.gnome.org/download-extension

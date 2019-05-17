@@ -1,5 +1,6 @@
 - block:
   - include_tasks: homedir.yml
   - include_tasks: git.yml
+  - include_tasks: gnome.yml
   become_user: "{{ user_login }}"
 
