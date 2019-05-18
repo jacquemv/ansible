@@ -14,19 +14,20 @@
     value: "'appmenu:minimize,maximize,close'"
 
 # Install extensions
-- name: Download GNOME Shell extensions
-  get_url:
-    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=8658"
-    dest: "/tmp/scroll-workspaces@gfxmonk.net.zip"
 
 - name: Create GNOME extension directories
   file:
     path: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
     state: directory
 
+- name: Download GNOME Shell extensions
+  get_url:
+    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=8658"
+    dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net.zip"
+
 - name: Unzip GNOME extensions
   unarchive:
-    src: "/tmp/scroll-workspaces@gfxmonk.net.zip"
+    src: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net.zip"
     dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
     creates: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net/metadata.json"
     remote_src: yes
