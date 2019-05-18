@@ -10,7 +10,11 @@
 - include_tasks: anaconda.yml
 
 # configure
+- include_tasks: sudo.yml
 - include_tasks: bash.yml
 - include_tasks: git.yml
 - include_tasks: gnome.yml
 - include_tasks: homedir.yml
+
+# setup services
+- include_tasks: ssh.yml
