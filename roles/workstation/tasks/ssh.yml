@@ -1,0 +1,19 @@
+- name: open ssh port
+  firewalld:
+    service: ssh
+    state: enabled
+    immediate: yes
+    permanent: yes
+
+- name: disable ssh root login
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin*'
+    line: "PermitRootLogin no"
+    
+- name: enable sshd
+  systemd: 
+    name: sshd
+    state: started
+    enabled: yes
+      
