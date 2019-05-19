@@ -13,3 +13,9 @@ port forwarding to enable connections to the virtual machine:
     SMB3,  TCP, 127.0.1.1, 139, 10.0.2.15, 139
     SMB4,  TCP, 127.0.1.1, 445, 10.0.2.15, 445
 
+shared folders:
+
+- Menu: Devices > Shard Folders > Shared Folders Settings...
+- add Machine Folder (e.g., path = D:\, name = data)
+- sudo mkdir /mnt/data
+- sudo mount -t vboxsf data /mnt/data
