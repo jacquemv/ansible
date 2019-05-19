@@ -1,0 +1,41 @@
+
+- name: install samba
+  dnf:
+    name:
+      - samba
+      - samba-client
+    state: latest
+
+- name: open samba ports
+  firewalld:
+    service: "{{ item }}"
+    state: enabled
+    immediate: yes
+    permanent: yes
+  with_items:
+    - samba
+    - samba-client
+
+- name: enable samba service
+  systemd: 
+    name: smb
+    state: started
+    enabled: yes
+
+- name: enable netbios service
+  systemd: 
+    name: nmb
+    state: started
+    enabled: yes
+
+- name: selinux enable samba home dir
+  seboolean:
+    name: samba_enable_home_dirs
+    state: yes
+    persistent: yes
+
+- name: selinux enable samba domain controller
+  seboolean:
+    name: samba_domain_controller
+    state: yes
+    persistent: yes
