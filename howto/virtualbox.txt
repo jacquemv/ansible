@@ -1,0 +1,15 @@
+
+port forwarding to enable connections to the virtual machine:
+
+- Menu: Devices > Network > Network settings...
+- Adapter 1 > Advanced > Port forwarding
+- ifconfig: find local IP address (e.g. 10.0.2.15)
+- add lines: 
+    SSH,   TCP, 127.0.1.1, 22,  10.0.2.15, 22
+    HTTP,  TCP, 127.0.1.1, 80,  10.0.2.15, 80
+    HTTPS, TCP, 127.0.1.1, 443, 10.0.2.15, 443
+    SMB1,  UDP, 127.0.1.1, 137, 10.0.2.15, 137
+    SMB2,  UDP, 127.0.1.1, 138, 10.0.2.15, 138
+    SMB3,  TCP, 127.0.1.1, 139, 10.0.2.15, 139
+    SMB4,  TCP, 127.0.1.1, 445, 10.0.2.15, 445
+
