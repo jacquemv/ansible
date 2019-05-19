@@ -1,0 +1,14 @@
+
+- name: set home dir permissions
+  file:
+    path: "/home/{{ apache_user_dir }}"
+    state: directory
+    mode: '0711'
+
+- name: create public_html directory
+  file:
+    path: "/home/{{ apache_user_dir }}/public_html"
+    state: directory
+    mode: '0755'
+    owner: "{{ apache_user_dir }}"
+    group: "{{ apache_user_dir }}"

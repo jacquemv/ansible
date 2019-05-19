@@ -1,0 +1,45 @@
+
+- include_tasks: userdir.yml
+
+- name: install apache
+  dnf:
+    name:
+      - httpd
+      - php
+      - php-common
+    state: latest
+
+- name: enable user dir
+  lineinfile:
+    path: /etc/httpd/conf.d/userdir.conf
+    regexp: 'UserDir enabled|UserDir disabled$'
+    line: "    UserDir enabled {{ apache_user_dir }}"
+    backup: yes
+
+- name: configure user dir name
+  lineinfile:
+    path: /etc/httpd/conf.d/userdir.conf
+    regexp: 'UserDir public_html$'
+    line: "    UserDir public_html"
+
+- name: open http/https ports
+  firewalld:
+    service: "{{ item }}"
+    state: enabled
+    immediate: yes
+    permanent: yes
+  with_items:
+    - http
+    - https
+
+- name: enable httpd
+  systemd: 
+    name: httpd
+    state: started
+    enabled: yes
+
+- name: selinux enable httpd home dir
+  seboolean:
+    name: httpd_enable_homedirs
+    state: yes
+    persistent: yes
