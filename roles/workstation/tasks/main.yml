@@ -1,5 +1,5 @@
 # install packages
-- include_tasks: basic.yml
+- include_tasks: dnf.yml
 - include_tasks: repo.yml
 - include_tasks: devel.yml
 - include_tasks: latex.yml
