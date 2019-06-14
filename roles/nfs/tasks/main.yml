@@ -1,0 +1,36 @@
+
+- name: install nfs
+  dnf:
+    name:
+      - nfs-utils
+    state: latest
+
+- name: create share directory
+  file:
+    path: /share
+    mode: "0777"
+    state: directory
+
+- name: configure exports file
+  lineinfile:
+    path: /etc/exports
+    line: "/share 10.129.0.0/16(rw)"
+    state: present
+    
+- name: enable nfs service
+  systemd: 
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - rpcbind
+    - nfs-server
+
+- name: open nfs ports
+  firewalld:
+    service: nfs
+    state: enabled
+    immediate: yes
+    permanent: yes
+
+
