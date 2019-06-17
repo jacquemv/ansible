@@ -1,0 +1,12 @@
+
+- name: install arp-scan
+  dnf:
+    name:
+      - arp-scan
+    state: latest
+
+- name: install script in cron.daily
+  template:
+    src: scan_ip.py
+    dest: /etc/cron.daily/scan_ip.py
+    mode: "0744"
