@@ -5,8 +5,9 @@
       - arp-scan
     state: latest
 
+# file names in cron.daily must not contain a dot (.)
 - name: install script in cron.daily
   template:
     src: scan_ip.py
-    dest: /etc/cron.daily/scan_ip.py
+    dest: /etc/cron.daily/scanip
     mode: "0744"
