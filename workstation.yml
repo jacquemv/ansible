@@ -16,3 +16,8 @@
         user_name: "Vincent Jacquemet"
         user_email: "vincent.jacquemet@umontreal.ca"
 
+    - include_role:
+        name: scanip
+    
+    - include_role:
+        name: share

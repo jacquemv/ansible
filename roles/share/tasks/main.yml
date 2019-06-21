@@ -1,0 +1,8 @@
+
+- name: mount share fileserver in /mnt/share
+  mount:
+    path: /mnt/share
+    src: "fileserver:/share"
+    fstype: nfs
+    opts: "defaults,_netdev,timeo=14,soft"
+    state: mounted
