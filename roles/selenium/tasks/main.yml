@@ -1,0 +1,12 @@
+
+- name: install python packages
+  pip:
+    name:
+      - selenium
+    executable: "/opt/anaconda3/bin/pip3"
+
+- name: download geckodriver
+  unarchive:
+    src: "https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz"
+    dest: /opt/anaconda3/bin
+    remote_src: yes
