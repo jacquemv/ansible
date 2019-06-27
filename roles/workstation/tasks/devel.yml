@@ -13,4 +13,25 @@
       - octave
       - gnome-builder
     state: latest
-        
+
+- name: import microsoft keys
+  rpm_key:
+    key: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+
+- name: install microsoft repository
+  blockinfile:
+    path: /etc/yum.repos.d/vscode.repo
+    create: yes
+    block: |
+      [code]
+      name=Visual Studio Code
+      baseurl=https://packages.microsoft.com/yumrepos/vscode
+      enabled=1
+      gpgcheck=1
+      gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+
+- name: install visual studio code
+  dnf:
+    name: code
+    state: latest
