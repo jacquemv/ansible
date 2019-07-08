@@ -15,9 +15,15 @@
         user_login: jacquem
         user_name: "Vincent Jacquemet"
         user_email: "vincent.jacquemet@umontreal.ca"
-
+    
+    # this assumes disks have been renamed to "data1", "data2", etc.
+    - include_role:
+        name: disks
+    
+    # this updates IP addresses based on a list of MAC addresses
     - include_role:
         name: scanip
     
+    # requires scanip
     - include_role:
         name: share
