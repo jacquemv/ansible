@@ -1,0 +1,76 @@
+# using the utility "Disks", rename data disks to "data1", "data2", etc.
+# then in each disk, create a directory "users" and in one of them 
+# also a directory "backup"
+
+- name: get data disk devices
+  find:
+    paths: /dev/disk/by-label
+    patterns: ['data*']
+    file_type: any
+  register: data_disk_labels
+
+- name: create mount points for data disks
+  file:
+    path: "/mnt/{{ item.path | basename }}"
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+  with_items: "{{ data_disk_labels.files }}"
+
+- name: mount data disks
+  mount:
+    src: "{{ item.path }}"
+    path: "/mnt/{{ item.path | basename }}"
+    state: mounted
+    fstype: ext4
+  with_items: "{{ data_disk_labels.files }}"
+
+- name: create symlinks for data disks
+  file:
+    src: "/mnt/{{ item.path | basename }}/users"
+    dest: "/{{ item.path | basename }}"
+    owner: root
+    group: root
+    state: link
+    force: yes
+  with_items: "{{ data_disk_labels.files }}"
+
+- name: find backup directory
+  find:
+    paths: ['/mnt/data1', '/mnt/data2', '/mnt/data3', '/mnt/data4']
+    patterns: ['backup']
+    file_type: directory
+  register: backup_dir
+
+- name: create backup directory
+  file:
+    path: "/mnt/{{ data_disk_labels.files[0].path | basename }}/backup"
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+  when:
+    - backup_dir.files | length == 0
+    - data_disk_labels.files | length > 0
+
+- name: symlink newly-created backup directory
+  file:
+    src: "/mnt/{{ data_disk_labels.files[0].path | basename }}/backup"
+    dest: "/backup"
+    owner: root
+    group: root
+    state: link
+    force: yes
+  when:
+    - backup_dir.files | length == 0
+    - data_disk_labels.files | length > 0
+
+- name: symlink backup directory
+  file:
+    src: "{{ backup_dir.files[0].path }}"
+    dest: "/backup"
+    state: link
+    force: yes
+  when: backup_dir.files | length > 0
+
