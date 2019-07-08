@@ -9,6 +9,9 @@
 # install python
 - include_tasks: anaconda.yml
 
+# install zotero
+- include_tasks: zotero.yml
+
 # configure
 - include_tasks: sudo.yml
 - include_tasks: bash.yml
