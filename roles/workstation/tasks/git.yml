@@ -5,4 +5,4 @@
     value: "{{ item.value }}"
   with_items:
     - {name: core.editor, value: nano}
-    - {name: color.ui, value: true}
+    - {name: color.ui, value: "true"}
