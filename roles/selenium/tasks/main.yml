@@ -3,7 +3,7 @@
   pip:
     name:
       - selenium
-    executable: "/opt/anaconda3/bin/pip3"
+    executable: "/opt/anaconda3/bin/pip"
 
 - name: download geckodriver
   unarchive:
