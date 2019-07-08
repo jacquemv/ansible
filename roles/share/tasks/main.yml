@@ -1,4 +1,7 @@
 
+- name: update /etc/hosts
+  shell: /etc/cron.daily/scanip
+
 - name: mount share fileserver in /mnt/share
   mount:
     path: /mnt/share
