@@ -1,0 +1,15 @@
+# customization for Vincent's machine
+---
+- hosts: local
+  become: yes
+
+  tasks:
+    
+    - include_role:
+        name: apache
+      vars:
+        apache_user_dir: jacquem
+    
+    - include_role:
+        name: selenium
+
