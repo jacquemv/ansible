@@ -1,0 +1,15 @@
+
+- name: create home backup directory
+  file:
+    path: /backup/home
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+
+# file names in cron.daily must not contain a dot (.)
+- name: install backup script in cron.daily
+  template:
+    src: backup-home.sh
+    dest: /etc/cron.daily/backup-home
+    mode: "0755"

@@ -20,6 +20,9 @@
     - include_role:
         name: disks
     
+    - include_role:
+        name: backup
+    
     # this updates IP addresses based on a list of MAC addresses
     - include_role:
         name: scanip

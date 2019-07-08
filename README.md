@@ -18,3 +18,5 @@ Then in each disk, create a directory "users" (owner: root, mode: 0777) and in o
 
 - ansible-playbook -K workstation.yml
 
+- additional customization: vincent.yml, fileserver.yml, adduser.yml
+
