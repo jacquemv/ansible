@@ -1,0 +1,9 @@
+---
+- hosts: local
+  become: true
+  
+  tasks:
+    - include_role:
+        name: backup
+
+
