@@ -4,7 +4,7 @@ ls -Z
 
 # change selinux context
 # use httpd_sys_rw_content_t if read/write is needed, e.g. wiki
-chcon -R --type=httpd_user_content_t/home/jacquem/public_html/NEWDIR
+chcon -R --type=httpd_user_content_t /home/jacquem/public_html/
 
 
 
