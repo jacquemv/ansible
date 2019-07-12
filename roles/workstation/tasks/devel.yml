@@ -12,6 +12,8 @@
       - lapack
       - octave
       - gnome-builder
+      - freeglut
+      - freeglut-devel
     state: latest
 
 - name: import microsoft keys
