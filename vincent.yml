@@ -13,3 +13,10 @@
     - include_role:
         name: selenium
 
+    - name: mount scratch fileserver in /mnt/scratch
+      mount:
+        path: /mnt/scratch
+        src: "fileserver:/scratch"
+        fstype: nfs
+        opts: "user,defaults,_netdev,timeo=14,soft"
+        state: mounted
