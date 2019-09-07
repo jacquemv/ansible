@@ -21,6 +21,8 @@
     name:
       - snakeviz
       - pyopengl
+      - pymc3
+      - arviz
     executable: "{{ anaconda_prefix }}/bin/pip"
       
     
