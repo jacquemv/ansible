@@ -1,0 +1,6 @@
+fileserver	e0:cb:4e:e6:d7:18
+vincent		bc:ee:7b:9b:32:79
+ariane		30:5a:3a:79:20:d6	30:5a:3a:79:20:d7
+eric		30:5a:3a:79:21:40	30:5a:3a:79:21:41
+alena		30:5a:3a:79:20:08	30:5a:3a:79:20:09
+samuel		f4:6d:04:e4:ee:83
