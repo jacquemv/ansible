@@ -3,16 +3,19 @@
 # dnf install -y arp-scan
 import datetime
 from subprocess import run, PIPE
+from urllib.request import urlopen
 
-machines = {
-    'e0:cb:4e:e6:d7:18': 'fileserver',
-    'bc:ee:7b:9b:32:79': 'vincent',
-    '30:5a:3a:79:20:d6': 'ariane',
-    '30:5a:3a:79:21:40': 'eric',
-    'f4:6d:04:e4:ee:83': 'samuel',
-    '30:5a:3a:79:20:08': 'alena',
-    '00:26:18:2e:82:b8': 'oldpc'
-}
+# download table of MAC addresses
+web_site = 'https://raw.githubusercontent.com/jacquemv/ansible/master/'
+table_file = 'roles/scanip/templates/mac_table.txt'
+table = urlopen(web_site+table_file).read().decode()
+
+# build dict of MAC addresses
+machines = {}
+for line in table.split('\n'):
+    items = line.split()
+    for mac in items[1:]:
+        machines[mac] = items[0]
 
 # read /etc/hosts
 ipdict = {}
