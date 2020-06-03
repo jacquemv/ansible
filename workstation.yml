@@ -6,8 +6,8 @@
     - include_role:
         name: workstation
       vars:
-        anaconda_version: "2019.10"
-        zotero_version: "5.0.80"
+        anaconda_version: "2020.02"
+        zotero_version: "5.0.87"
     
     # this assumes that an account 'jacquem' has been created
     - include_role:

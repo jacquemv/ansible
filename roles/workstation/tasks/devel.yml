@@ -3,7 +3,7 @@
     name:
       - make
       - gcc-c++
-      - CGAL
+      #- CGAL
       - CGAL-devel
       - eigen3-devel
       - OpenMesh
@@ -11,7 +11,7 @@
       - autotrace
       - lapack
       - octave
-      - gnome-builder
+      #- gnome-builder
       - freeglut
       - freeglut-devel
     state: latest

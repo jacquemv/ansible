@@ -22,7 +22,7 @@
 
 - name: Download GNOME Shell extensions
   get_url:
-    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=8658"
+    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=16519"
     dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net.zip"
 
 - name: Unzip GNOME extensions

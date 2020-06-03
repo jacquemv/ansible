@@ -4,6 +4,11 @@
     name: python3-devel
     state: present
 
+- name: install gnome-extensions-app
+  dnf:
+    name: gnome-extensions-app
+    state: present
+
 - name: install psutil python packages
   pip:
     name:
