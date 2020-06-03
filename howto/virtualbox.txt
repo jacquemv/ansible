@@ -16,6 +16,9 @@ port forwarding to enable connections to the virtual machine:
 shared folders:
 
 - Menu: Devices > Shard Folders > Shared Folders Settings...
-- add Machine Folder (e.g., path = D:\, name = data)
+- add Machine Folder (e.g., path = D:\, name = data, automount = on)
+- usermod -aG vboxsf jacquem   # set permission
+
+manual mount:
 - sudo mkdir /mnt/data
 - sudo mount -t vboxsf data /mnt/data
