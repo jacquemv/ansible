@@ -1,0 +1,16 @@
+---
+- hosts: local
+  become: yes
+
+  tasks:
+    - include_role:
+        name: minimal
+    
+    # this assumes that an account 'jacquem' has been created
+    - include_role:
+        name: user
+      vars:
+        user_login: jacquem
+        user_name: "Vincent Jacquemet"
+        user_email: "vincent.jacquemet@umontreal.ca"
+  

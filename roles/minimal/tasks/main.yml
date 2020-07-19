@@ -1,0 +1,11 @@
+# install packages
+- include_tasks: dnf.yml
+
+# configure
+- include_tasks: bash.yml
+- include_tasks: git.yml
+- include_tasks: gnome.yml
+- include_tasks: homedir.yml
+
+# setup services
+- include_tasks: ssh.yml
