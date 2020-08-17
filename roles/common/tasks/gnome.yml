@@ -1,0 +1,19 @@
+# requirements for ansible module dconf
+- name: install python3-devel
+  dnf:
+    name: python3-devel
+    state: latest
+
+- name: install gnome extensions-app and tweak-tool
+  dnf:
+    name:
+      - gnome-extensions-app
+      - gnome-tweak-tool
+    state: latest
+
+- name: install psutil python packages
+  pip:
+    name:
+      - psutil
+    executable: /usr/bin/pip3
+
