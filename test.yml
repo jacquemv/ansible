@@ -4,4 +4,7 @@
   
   tasks:
     - include_role:
-        name: backup
+        name: programming
+      vars:
+        anaconda_version: "2020.07"
+
