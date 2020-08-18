@@ -13,4 +13,6 @@
       - octave
       - freeglut
       - freeglut-devel
+      - ffmpeg
+      - ffmpeg-devel
     state: latest

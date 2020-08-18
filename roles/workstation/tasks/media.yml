@@ -3,7 +3,5 @@
     name:
       - ImageMagick
       - gimp
-      - ffmpeg
-      - ffmpeg-devel
     state: latest
         
