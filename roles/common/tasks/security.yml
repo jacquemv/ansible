@@ -1,0 +1,148 @@
+# changes suggested by open-scap
+
+- name: set password minimum length in login.defs
+  lineinfile:
+    dest: /etc/login.defs
+    regexp: ^PASS_MIN_LEN *[0-9]*
+    state: present
+    line: PASS_MIN_LEN   8
+    create: true
+
+- name: prevent login to accounts with empty password - system-auth
+  replace:
+    dest: /etc/pam.d/system-auth
+    follow: true
+    regexp: nullok
+
+- name: prevent login to accounts with empty password - password-auth
+  replace:
+    dest: /etc/pam.d/password-auth
+    follow: true
+    regexp: nullok
+
+- name: direct root logins not allowed
+  copy:
+    dest: /etc/securetty
+    content: ''
+
+
+- name: test for crypto_policy group
+  command: grep '^\s*\[\s*crypto_policy\s*]' /etc/pki/tls/openssl.cnf
+  register: test_crypto_policy_group
+  ignore_errors: true
+  changed_when: false
+  check_mode: false
+
+- name: add .include for opensslcnf.config to crypto_policy section
+  lineinfile:
+    create: true
+    insertafter: ^\s*\[\s*crypto_policy\s*]\s*
+    line: .include /etc/crypto-policies/back-ends/opensslcnf.config
+    path: /etc/pki/tls/openssl.cnf
+  when:
+    - test_crypto_policy_group.stdout is defined
+    - test_crypto_policy_group.stdout | length > 0
+
+- name: add crypto_policy group and set include opensslcnf.config
+  lineinfile:
+    create: true
+    line: |-
+      [crypto_policy]
+      .include /etc/crypto-policies/back-ends/opensslcnf.config
+    path: /etc/pki/tls/openssl.cnf
+  when:
+    - test_crypto_policy_group.stdout is defined
+    - test_crypto_policy_group.stdout | length < 1
+
+
+- name: disable GDM guest login
+  ini_file:
+    dest: /etc/gdm/custom.conf
+    section: daemon
+    option: TimedLoginEnable
+    value: 'false'
+    no_extra_spaces: true
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: enable the GNOME3 login number of failures
+  ini_file:
+    dest: /etc/dconf/db/gdm.d/00-security-settings
+    section: org/gnome/login-screen
+    option: allowed-failures
+    value: '5'
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: prevent user modification of GNOME3 login number of failures
+  lineinfile:
+    path: /etc/dconf/db/gdm.d/locks/00-security-settings-lock
+    regexp: ^/org/gnome/login-screen/allowed-failures
+    line: /org/gnome/login-screen/allowed-failures
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: disable GDM automatic login
+  ini_file:
+    dest: /etc/gdm/custom.conf
+    section: daemon
+    option: AutomaticLoginEnable
+    value: 'false'
+    no_extra_spaces: true
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+
+- name: enable GNOME3 screensaver idle activation
+  ini_file:
+    dest: /etc/dconf/db/local.d/00-security-settings
+    section: org/gnome/desktop/screensaver
+    option: idle_activation_enabled
+    value: 'true'
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: Set GNOME3 Screensaver Inactivity Timeout
+  ini_file:
+    dest: /etc/dconf/db/local.d/00-security-settings
+    section: org/gnome/desktop/screensaver
+    option: idle-delay
+    value: '900' # seconds = 15 min
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: set GNOME3 screensaver lock delay after activation period
+  ini_file:
+    dest: /etc/dconf/db/local.d/00-security-settings
+    section: org/gnome/desktop/screensaver
+    option: lock-delay
+    value: uint32 5
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+- name: enable GNOME3 screensaver lock after idle period
+  ini_file:
+    dest: /etc/dconf/db/local.d/00-security-settings
+    section: org/gnome/desktop/screensaver
+    option: lock-enabled
+    value: 'true'
+    create: true
+  when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
+
+
+- name: ensure abrt is removed
+  package:
+    name: abrt
+    state: absent
+
+
+
+
+
+
+
+
+
+
+
+

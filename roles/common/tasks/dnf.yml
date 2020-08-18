@@ -22,3 +22,11 @@
     state: started
     enabled: yes
 
+- name: ensure GPG check enabled for local packages
+  ini_file:
+    dest: /etc/dnf/dnf.conf
+    section: main
+    option: localpkg_gpgcheck
+    value: '1'
+    create: true
+

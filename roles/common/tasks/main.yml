@@ -10,3 +10,6 @@
 # setup services
 - include_tasks: ssh.yml
 
+# security
+- include_tasks: security.yml
+

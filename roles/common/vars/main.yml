@@ -5,7 +5,7 @@
 # [commands]
 dnf_automatic_apply_updates: yes
 dnf_automatic_download_updates: yes
-dnf_automatic_upgrade_type: security
+dnf_automatic_upgrade_type: default # or security
 dnf_automatic_random_sleep: 300
 
 # [emitters]
