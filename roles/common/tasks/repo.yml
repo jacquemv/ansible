@@ -1,10 +1,10 @@
 
-- name: install rpmfusion-free yum repo
+- name: install rpmfusion-free dnf repo
   dnf:
     name: http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm
     state: present
 
-- name: install rpmfusion-nonfree yum repo
+- name: install rpmfusion-nonfree dnf repo
   dnf:
     name: http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm
     state: present

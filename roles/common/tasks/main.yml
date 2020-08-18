@@ -1,5 +1,6 @@
 # install and update packages
 - include_tasks: dnf.yml
+- include_tasks: repo.yml
 
 # configure
 - include_tasks: bash.yml
