@@ -1,0 +1,5 @@
+# security auditing and fixing
+# https://www.open-scap.org/tools/scap-workbench/
+
+sudo dnf install scap-workbench
+scap-workbench
