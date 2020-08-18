@@ -1,0 +1,11 @@
+
+# text editor
+- include_tasks: visualstudio.yml
+
+# C/C++ libraries
+- include_tasks: lib.yml
+
+# install python
+- include_tasks: anaconda.yml
+- include_tasks: python.yml
+

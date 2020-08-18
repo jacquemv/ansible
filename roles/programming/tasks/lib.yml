@@ -1,0 +1,16 @@
+- name: install programming tools and libraries
+  dnf:
+    name:
+      - make
+      - gcc-c++
+      #- CGAL
+      - CGAL-devel
+      - eigen3-devel
+      - OpenMesh
+      - OpenMesh-devel
+      - autotrace
+      - lapack
+      - octave
+      - freeglut
+      - freeglut-devel
+    state: latest
