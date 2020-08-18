@@ -1,7 +1,7 @@
-- name: install basic packages
+- name: install graphical packages
   dnf:
     name:
       - ImageMagick
       - gimp
     state: latest
-        
+

@@ -15,4 +15,5 @@
       - freeglut-devel
       - ffmpeg
       - ffmpeg-devel
+      - ImageMagick
     state: latest
