@@ -1,6 +1,6 @@
 
 # install latex and zotero
+- include_tasks: graphics.yml
 - include_tasks: latex.yml
 - include_tasks: zotero.yml
-
 

@@ -4,11 +4,21 @@
 
   tasks:
     - include_role:
-        name: workstation
+        name: common
+        
+    - include_role:
+        name: chrome
+        
+    - include_role:
+        name: programming
       vars:
-        anaconda_version: "2020.02"
-        zotero_version: "5.0.87"
-    
+        anaconda_version: "2020.07"
+        
+    - include_role:
+        name: writing
+      vars:
+        zotero_version: "5.0.89"
+
     # this assumes that an account 'jacquem' has been created
     - include_role:
         name: user
@@ -17,17 +27,3 @@
         user_name: "Vincent Jacquemet"
         user_email: "vincent.jacquemet@umontreal.ca"
     
-    # this assumes disks have been renamed to "data1", "data2", etc.
-    - include_role:
-        name: disks
-    
-    - include_role:
-        name: backup
-    
-    # this updates IP addresses based on a list of MAC addresses
-    - include_role:
-        name: scanip
-    
-    # requires scanip
-    - include_role:
-        name: share
