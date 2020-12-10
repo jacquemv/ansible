@@ -1,10 +1,31 @@
 
+
+shared folders:
+
+Menu: Devices > Shard Folders > Shared Folders Settings...
+add Machine Folder (e.g., path = D:\, name = share, automount = on)
+sudo usermod -aG vboxsf jacquem   # set permission; reboot before using
+sudo mkdir /share
+sudo ln -s /media/sf_share/ /share
+
+
+mount home directory from virtual disk:
+
+sudo nano /etc/fstab
+# append to /etc/fstab
+UUID=0b900249-5e7c-4512-a02b-e02686b8138c /mnt/home ext4 defaults  0  2
+sudo mkdir /mnt/home
+sudo mount -a
+sudo rm -rf /home/jacquem
+sudo ln -s /mnt/home/jacquem /home/jacquem
+
+
 port forwarding to enable connections to the virtual machine:
 
-- Menu: Devices > Network > Network settings...
-- Adapter 1 > Advanced > Port forwarding
-- ifconfig: find local IP address (e.g. 10.0.2.15)
-- add lines: 
+Menu: Devices > Network > Network settings...
+Adapter 1 > Advanced > Port forwarding
+ifconfig: find local IP address (e.g. 10.0.2.15)
+add lines: 
     SSH,   TCP, 127.0.1.1, 22,  10.0.2.15, 22
     HTTP,  TCP, 127.0.1.1, 80,  10.0.2.15, 80
     HTTPS, TCP, 127.0.1.1, 443, 10.0.2.15, 443
@@ -12,13 +33,3 @@ port forwarding to enable connections to the virtual machine:
     SMB2,  UDP, 127.0.1.1, 138, 10.0.2.15, 138
     SMB3,  TCP, 127.0.1.1, 139, 10.0.2.15, 139
     SMB4,  TCP, 127.0.1.1, 445, 10.0.2.15, 445
-
-shared folders:
-
-- Menu: Devices > Shard Folders > Shared Folders Settings...
-- add Machine Folder (e.g., path = D:\, name = data, automount = on)
-- usermod -aG vboxsf jacquem   # set permission
-
-manual mount:
-- sudo mkdir /mnt/data
-- sudo mount -t vboxsf data /mnt/data
