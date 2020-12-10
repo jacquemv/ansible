@@ -12,12 +12,12 @@
     - include_role:
         name: programming
       vars:
-        anaconda_version: "2020.07"
+        anaconda_version: "2020.11"
         
     - include_role:
         name: writing
       vars:
-        zotero_version: "5.0.89"
+        zotero_version: "5.0.93"
 
     # this assumes that an account 'jacquem' has been created
     - include_role:
