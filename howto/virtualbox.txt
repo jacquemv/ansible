@@ -1,6 +1,5 @@
 
-
-shared folders:
+---- shared folders:
 
 Menu: Devices > Shard Folders > Shared Folders Settings...
 add Machine Folder (e.g., path = D:\, name = share, automount = on)
@@ -9,7 +8,7 @@ sudo mkdir /share
 sudo ln -s /media/sf_share/ /share
 
 
-mount home directory from virtual disk:
+---- mount home directory from virtual disk:
 
 sudo nano /etc/fstab
 # append to /etc/fstab
@@ -20,7 +19,23 @@ sudo rm -rf /home/jacquem
 sudo ln -s /mnt/home/jacquem /home/jacquem
 
 
-port forwarding to enable connections to the virtual machine:
+---- create raw disk vmdk in windows 10:
+
+identify physical drive number using open disk manager
+run command as admin (example for disk 2):
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" internalcommands createrawvmdk -filename Crucial1T.vmdk -rawdisk \\.\PHYSICALDRIVE2
+run virtualbox as admin
+
+
+---- remove virtual disk in windows 10:
+
+identify disk UUID:
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" list hdds
+run command:
+"C:\Program Files\Oracle\VirtualBox\VBoxManage.exe" closemedium disk <UUID> --delete
+
+
+---- port forwarding to enable connections to the virtual machine:
 
 Menu: Devices > Network > Network settings...
 Adapter 1 > Advanced > Port forwarding
@@ -33,3 +48,4 @@ add lines:
     SMB2,  UDP, 127.0.1.1, 138, 10.0.2.15, 138
     SMB3,  TCP, 127.0.1.1, 139, 10.0.2.15, 139
     SMB4,  TCP, 127.0.1.1, 445, 10.0.2.15, 445
+
