@@ -3,7 +3,7 @@
     name:
       - make
       - gcc-c++
-      #- CGAL
+      - SFCGAL
       - CGAL-devel
       - eigen3-devel
       - OpenMesh
