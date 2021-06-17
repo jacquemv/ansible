@@ -1,11 +1,16 @@
 ---
-- hosts: local
+- name: minimal installation and configuration
+  hosts: local
   become: yes
 
   tasks:
+  
     - include_role:
         name: common
     
+    - include_role:
+        name: chrome
+
     # this assumes that an account 'jacquem' has been created
     - include_role:
         name: user

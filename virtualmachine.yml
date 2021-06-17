@@ -1,19 +1,15 @@
 ---
+- import_playbook: minimal.yml
+
 - hosts: local
   become: yes
 
   tasks:
+  
     - include_role:
-        name: workstation
-      vars:
-        anaconda_version: 2019.07
-        zotero_version: "5.0.74"
-    
-    # this assumes that an account 'jacquem' has been created
+        name: programming
+   
     - include_role:
-        name: user
-      vars:
-        user_login: jacquem
-        user_name: "Vincent Jacquemet"
-        user_email: "vincent.jacquemet@umontreal.ca"
+        name: writing
+        
   

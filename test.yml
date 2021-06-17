@@ -5,6 +5,5 @@
   tasks:
     - include_role:
         name: programming
-      vars:
-        anaconda_version: "2020.07"
+
 
