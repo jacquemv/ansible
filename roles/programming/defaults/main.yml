@@ -1,8 +1,6 @@
 
 # anaconda version
 # see https://repo.anaconda.com/archive
-# define the variable 'anaconda_version' in the playbook, e.g.
-# anaconda_version: 2019.03
 
 # where to save the (large) download file
 anaconda_download_dest: /opt/downloads
@@ -11,7 +9,7 @@ anaconda_download_dest: /opt/downloads
 anaconda_prefix: /opt/anaconda
 
 # file names
-anaconda_script: "Anaconda3-{{ anaconda_version }}-Linux-{{ ansible_architecture }}.sh"
+anaconda_script: "Anaconda3-{{ getanaconda.stdout }}-Linux-x86_64.sh"
 anaconda_url: "https://repo.anaconda.com/archive/{{ anaconda_script }}"
 anaconda_path: "{{ anaconda_download_dest }}/{{ anaconda_script }}"
 

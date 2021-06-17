@@ -1,8 +1,17 @@
-# define "zotero_version" in the laybook
+
+- name: find latest zotero version
+  shell:
+    cmd: "wget -q -O - https://www.zotero.org/download/ | grep linux-x86_64 | cut -d: -f6 | tr -cd [0-9]."
+    warn: false
+  register: getzotero
+
+- name: zotero version
+  debug:
+    msg: "{{ getzotero.stdout }}"
 
 - name: download zotero
   get_url:
-    url: "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version={{ zotero_version }}"
+    url: "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version={{ getzotero.stdout }}"
     dest: "/opt/downloads"
   register: zotero_download
   until: zotero_download is succeeded
@@ -15,15 +24,16 @@
     
 - name: unarchive zotero
   unarchive:
-    src: "/opt/downloads/Zotero-{{ zotero_version }}_linux-x86_64.tar.bz2"
+    src: "/opt/downloads/Zotero-{{ getzotero.stdout }}_linux-x86_64.tar.bz2"
     dest: "/opt/zotero"
     creates: "/opt/zotero/Zotero_linux-x86_64"
 
 - name: set launcher icon
-  shell: /opt/zotero//Zotero_linux-x86_64/set_launcher_icon
+  shell: /opt/zotero/Zotero_linux-x86_64/set_launcher_icon
 
 - name: create symlink to zotero
   file:
-    src: /opt/zotero//Zotero_linux-x86_64/zotero
+    src: /opt/zotero/Zotero_linux-x86_64/zotero
     dest: /usr/bin/zotero
     state: link
+
