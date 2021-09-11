@@ -1,0 +1,11 @@
+# play role 'samba'
+
+# add user
+sudo smbpasswd -a jacquem
+# type password
+
+# update configuration
+sudo systemctl reload smb
+
+# delete user
+sudo smbpasswd -x jacquem
