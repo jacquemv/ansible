@@ -1,0 +1,5 @@
+# fix pkg
+# in /usr/local/etc/pkg/repos/, set the "enabled" parameter to "no" for local.conf and to "yes" for FreeBSD.conf
+
+# install arp-scan
+pkg install arp-scan
