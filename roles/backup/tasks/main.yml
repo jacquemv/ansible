@@ -1,4 +1,10 @@
 
+- name: install rclone
+  dnf:
+    name:
+      - rclone
+    state: latest
+
 - name: create home backup directory
   file:
     path: /backup/home
