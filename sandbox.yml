@@ -1,0 +1,14 @@
+---
+- import_playbook: minimal.yml
+
+- hosts: local
+  become: yes
+
+  tasks:
+  - name: install packages
+    dnf:
+      name:
+        - keepassx
+        - rclone
+      state: latest
+
