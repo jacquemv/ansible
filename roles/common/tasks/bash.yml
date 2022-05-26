@@ -8,6 +8,7 @@
       alias l='ls'
       alias ll='ls -lh'
       alias cdl='cd .. ; ls'
+      alias gedit=gnome-text-editor
       export EDITOR=/usr/bin/nano
       export PYTHONPATH=$PYTHONPATH:$HOME/python
       export PATH=$HOME/bin:/opt/anaconda/bin:$PATH

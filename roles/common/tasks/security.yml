@@ -10,14 +10,12 @@
 
 - name: prevent login to accounts with empty password - system-auth
   replace:
-    dest: /etc/pam.d/system-auth
-    follow: true
+    path: /etc/pam.d/system-auth
     regexp: nullok
 
 - name: prevent login to accounts with empty password - password-auth
   replace:
-    dest: /etc/pam.d/password-auth
-    follow: true
+    path: /etc/pam.d/password-auth
     regexp: nullok
 
 - name: direct root logins not allowed

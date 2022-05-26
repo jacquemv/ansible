@@ -36,12 +36,7 @@
 - name: Enable shell extensions
   dconf:
     key: /org/gnome/shell/enabled-extensions
-    value: "['launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com', 'scroll-workspaces@gfxmonk.net']"
-
-- name: Configure extensions
-  dconf:
-    key: /org/gnome/shell/extensions/net/gfxmonk/scroll-workspaces/indicator
-    value: "true"
+    value: "['launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'window-list@gnome-shell-extensions.gcampax.github.com']"
 
 # Workspaces
 - name: Static workspaces
