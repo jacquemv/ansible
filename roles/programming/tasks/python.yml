@@ -6,4 +6,5 @@
       - pyopengl
       - pymc3
       - arviz
+      - Cython
     executable: "{{ anaconda_prefix }}/bin/pip"

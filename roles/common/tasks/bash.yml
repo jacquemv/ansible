@@ -12,6 +12,7 @@
       export EDITOR=/usr/bin/nano
       export PYTHONPATH=$PYTHONPATH:$HOME/python
       export PATH=$HOME/bin:/opt/anaconda/bin:$PATH
+      export PYOPENGL_PLATFORM=osmesa
 
 - name: bash fancy color prompt
   blockinfile:

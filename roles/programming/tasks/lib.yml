@@ -16,5 +16,7 @@
       - ffmpeg
       - ffmpeg-devel
       - ImageMagick
+      - mesa-libOSMesa
+      - mesa-libOSMesa-devel
     state: latest
     allowerasing: true # to replace ffmpeg-free with the rpmfusion package
