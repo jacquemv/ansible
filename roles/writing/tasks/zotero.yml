@@ -2,7 +2,6 @@
 - name: find latest zotero version
   shell:
     cmd: "wget -q -O - https://www.zotero.org/download/ | grep linux-x86_64 | cut -d: -f6 | tr -cd [0-9]."
-    warn: false
   register: getzotero
 
 - name: zotero version

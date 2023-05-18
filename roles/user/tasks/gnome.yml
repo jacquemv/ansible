@@ -13,25 +13,6 @@
     key: /org/gnome/desktop/wm/preferences/button-layout
     value: "'appmenu:minimize,maximize,close'"
 
-# Install extensions
-
-- name: Create GNOME extension directories
-  file:
-    path: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
-    state: directory
-
-- name: Download GNOME Shell extensions
-  get_url:
-    url: "{{ gnome_url }}/scroll-workspaces%40gfxmonk.net.shell-extension.zip?version_tag=16519"
-    dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net.zip"
-
-- name: Unzip GNOME extensions
-  unarchive:
-    src: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net.zip"
-    dest: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net"
-    creates: "{{ path_extensions }}/scroll-workspaces@gfxmonk.net/metadata.json"
-    remote_src: yes
-
 # Configure extensions
 - name: Enable shell extensions
   dconf:

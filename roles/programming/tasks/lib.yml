@@ -17,3 +17,4 @@
       - ffmpeg-devel
       - ImageMagick
     state: latest
+    allowerasing: true # to replace ffmpeg-free with the rpmfusion package

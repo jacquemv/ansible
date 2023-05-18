@@ -7,7 +7,6 @@
 - name: find latest anaconda version
   shell:
     cmd: "wget -q -O - repo.anaconda.com/archive | grep Anaconda3-20.*Linux-x86_64 | sort | tail -1 | cut -d- -f2"
-    warn: false
   register: getanaconda
 
 - name: anaconda version
@@ -27,6 +26,12 @@
   args:
     creates: "{{ anaconda_prefix }}"
 
+- name: fix libstdc++ version in anaconda
+  ansible.builtin.shell: |
+    rm /opt/anaconda/lib/libstdc++.so
+    rm /opt/anaconda/lib/libstdc++.so.6
+    ln -s /usr/lib64/libstdc++.so.6 /opt/anaconda/lib/libstdc++.so.6
+    ln -s /opt/anaconda/lib/libstdc++.so.6 /opt/anaconda/lib/libstdc++.so
 
 # with this change, 'sudo pip' refers to anaconda pip and not /usr/bin/pip
 - name: update sudo secure_path
