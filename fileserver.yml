@@ -1,8 +1,0 @@
----
-- hosts: local
-  become: yes
-
-  tasks:
-    - include_role:
-        name: nfs
-    
