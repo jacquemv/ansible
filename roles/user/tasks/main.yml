@@ -1,3 +1,37 @@
+- name: find data directories
+  find:
+    paths: "/"
+    patterns: "data*"
+    file_type: "any"
+  register: data_dirs
+
+- name: create user data directory in data disks
+  file:
+    path: "{{ item.path }}/{{ user_login }}"
+    owner: "{{ user_login }}"
+    group: "{{ user_login }}"
+    mode: "0755"
+    state: directory
+  with_items: "{{ data_dirs.files }}"
+
+- name: find scratch directory
+  find:
+    paths: "/"
+    patterns: "scratch"
+    file_type: "any"
+  register: scratch_dir
+
+# doesn't create if /scratch doesn't exist
+- name: create user scratch directory
+  file:
+    path: "/scratch/{{ user_login }}"
+    owner: "{{ user_login }}"
+    group: "{{ user_login }}"
+    mode: "0755"
+    state: directory
+  with_items: "{{ scratch_dir.files }}"
+
+# run as user
 - block:
   - include_tasks: homedir.yml
   - include_tasks: git.yml

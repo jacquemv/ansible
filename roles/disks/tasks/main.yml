@@ -26,6 +26,24 @@
     fstype: ext4
   with_items: "{{ data_disk_labels.files }}"
 
+- name: create users directory in data disks
+  file:
+    path: "/mnt/{{ item.path | basename }}/users"
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+  with_items: "{{ data_disk_labels.files }}"
+
+- name: create scratch directory in data disks
+  file:
+    path: "/mnt/{{ item.path | basename }}/scratch"
+    owner: root
+    group: root
+    mode: "0755"
+    state: directory
+  with_items: "{{ data_disk_labels.files }}"
+
 - name: create symlinks for data disks
   file:
     src: "/mnt/{{ item.path | basename }}/users"
@@ -74,3 +92,10 @@
     force: yes
   when: backup_dir.files | length > 0
 
+- name: symlink scratch directory
+  file:
+    src: "{{ backup_dir.files[0].path }}/../scratch"
+    dest: "/scratch"
+    state: link
+    force: yes
+  when: backup_dir.files | length > 0
