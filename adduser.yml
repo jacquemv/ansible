@@ -12,13 +12,16 @@
     - name: "user_email"
       prompt: "email address"
       private: no
+    - name: "user_passwd"
+      prompt: "password"
+      private: no
   
   tasks:
     - name: create user
       user:
         name: "{{ user_login }}"
         comment: "{{ user_name }}"
-        password: ""
+        password: "{{ user_passwd }}"
     
     - include_role:
         name: user
