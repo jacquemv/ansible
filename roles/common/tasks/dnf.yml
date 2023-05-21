@@ -9,6 +9,8 @@
     name:
       - dnf-automatic
       - nano
+      - cronie
+      - cronie-anacron
     state: latest
 
 - name: dnf-automatic configuration file
@@ -19,6 +21,12 @@
 - name: Start and enable systemd timer for dnf-automatic
   service:
     name: dnf-automatic-install.timer
+    state: started
+    enabled: yes
+
+- name: enable crond
+  systemd: 
+    name: crond.service
     state: started
     enabled: yes
 
