@@ -6,7 +6,7 @@
 
 - name: find latest anaconda version
   shell:
-    cmd: "wget -q -O - repo.anaconda.com/archive | grep Anaconda3-20.*Linux-x86_64 | sort | tail -1 | cut -d- -f2"
+    cmd: "wget -q -O - repo.anaconda.com/archive | grep Anaconda3-20.*Linux-x86_64 | sort | tail -1 | cut -d- -f2,3"
   register: getanaconda
 
 - name: anaconda version
