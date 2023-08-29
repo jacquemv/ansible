@@ -1,6 +1,14 @@
+lmb23a  04:7c:16:7c:9b:ff
+lmb23b  04:7c:16:7c:9b:a6
+lmb23c  04:7c:16:7c:9b:e8
+lmb21a  fc:34:97:a9:0d:c1    fc:34:97:a9:0e:65
+lmb21b  fc:34:97:a9:0d:d5    fc:34:97:a9:0e:7c
+lmb21c  fc:34:97:a9:0c:ea    fc:34:97:a9:0e:37
+lmb18a  04:d4:c4:48:1b:d0
+lmb18b  04:d4:c4:48:16:c3
 vj23    04:7c:16:6f:4d:22    70:d8:23:32:ac:53
 vj21a   2c:f0:5d:a3:c5:43    e4:5e:37:fe:82:06
-vj20w   ‪24:4B:fe:de:17:f6    ‪24:4B:fe:de:17:f7    f8:e4:e3:5b:0a:d1
+vj20w   ‪24:4b:fe:de:17:f6    ‪24:4B:fe:de:17:f7    f8:e4:e3:5b:0a:d1
 vj20s   24:4b:fe:7e:4b:88
 vj18    d8:9e:f3:7b:0e:f5    9c:30:5b:73:6a:9f
 vj16a   30:5a:3a:79:20:08    30:5a:3a:79:20:09
