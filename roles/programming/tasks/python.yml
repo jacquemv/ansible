@@ -7,4 +7,6 @@
       - pymc3
       - arviz
       - Cython
+      - build
+      - twine
     executable: "{{ anaconda_prefix }}/bin/pip"

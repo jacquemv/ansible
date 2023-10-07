@@ -1,0 +1,1 @@
+rclone sync  -Pl --create-empty-src-dirs testdir/ pcloud:linux-home
