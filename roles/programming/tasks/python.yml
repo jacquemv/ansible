@@ -4,7 +4,7 @@
     name:
       - snakeviz
       - pyopengl
-      - pymc3
+      #- pymc3
       - arviz
       - Cython
       - build
