@@ -126,21 +126,3 @@
     value: 'true'
     create: true
   when: ansible_virtualization_role != "guest" or ansible_virtualization_type != "docker"
-
-
-- name: ensure abrt is removed
-  package:
-    name: abrt
-    state: absent
-
-
-
-
-
-
-
-
-
-
-
-
