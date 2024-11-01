@@ -18,10 +18,17 @@
       - mesa-libOSMesa-devel
     state: latest
 
+- name: uninstall ffmpeg-free
+  dnf:
+    name:
+      - ffmpeg-free
+      - ffmpeg-free--devel
+    state: absent
+
 - name: install ffmpeg
   dnf:
     name:
       - ffmpeg
       - ffmpeg-devel
     state: latest
-    allowerasing: true # to replace ffmpeg-free with the rpmfusion package
+    allowerasing: true
