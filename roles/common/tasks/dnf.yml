@@ -3,29 +3,35 @@
   dnf:
     name: "*"
     state: latest
-    
+
 - name: install basic packages
   dnf:
     name:
-      - dnf-automatic
       - nano
       - cronie
       - cronie-anacron
     state: latest
 
+- name: install automatic update
+  dnf:
+    name:
+      - dnf5-plugin-automatic
+    allowerasing: true
+    state: present
+
 - name: dnf-automatic configuration file
   template:
     src: automatic.conf.j2
-    dest: /etc/dnf/automatic.conf
+    dest: /etc/dnf/dnf5-plugins/automatic.conf
 
 - name: Start and enable systemd timer for dnf-automatic
   service:
-    name: dnf-automatic-install.timer
+    name: dnf5-automatic.timer
     state: started
     enabled: yes
 
 - name: enable crond
-  systemd: 
+  systemd:
     name: crond.service
     state: started
     enabled: yes
