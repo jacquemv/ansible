@@ -8,7 +8,7 @@
   - name: install packages
     dnf:
       name:
-        - keepassx
+        - keepassxc
         - rclone
       state: latest
 
