@@ -1,0 +1,16 @@
+sudo dnf install gcc-c++
+sudo dnf install openssl openssl-devel
+sudo dnf install rubygem-jekyll
+sudo dnf install -y  ruby-devel
+
+echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# cd directory with a file named 'Gemfile'
+bundle install
+gem install jekyll-theme-dinky
+
+
+
