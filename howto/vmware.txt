@@ -1,0 +1,3 @@
+sudo mkdir /mnt/data
+sudo chown jacquem:jacquem /mnt/data
+sudo /usr/bin/vmhgfs-fuse .host:/data /mnt/data -o subtype=vmhgfs-fuse,allow_other
