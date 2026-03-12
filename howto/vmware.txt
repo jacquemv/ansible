@@ -1,3 +1,21 @@
+<<<<<<< HEAD
 sudo mkdir /mnt/data
 sudo chown jacquem:jacquem /mnt/data
 sudo /usr/bin/vmhgfs-fuse .host:/data /mnt/data -o subtype=vmhgfs-fuse,allow_other
+=======
+# Shared folder
+
+# validate the existence of the shared folder
+vmware-hgfsclient
+
+# create mount point
+sudo mkdir /mnt/hgfs/data
+
+# mount folder
+sudo vmhgfs-fuse .host:/data /mnt/hgfs/data -o allow_other -o uid=1000
+
+# update fstab
+sudo nano /etc/fstab
+# add line:
+.host:/data    /mnt/hgfs/data    fuse.vmhgfs-fuse    defaults,allow_other,uid=1000     0    0
+>>>>>>> refs/remotes/origin/master

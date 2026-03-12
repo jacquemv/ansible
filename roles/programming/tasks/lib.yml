@@ -14,8 +14,8 @@
       - freeglut
       - freeglut-devel
       - ImageMagick
-      - mesa-libOSMesa
-      - mesa-libOSMesa-devel
+      - mesa-compat-libOSMesa
+      - mesa-compat-libOSMesa-devel
     state: latest
 
 - name: uninstall ffmpeg-free
