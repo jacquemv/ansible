@@ -3,6 +3,9 @@
     name:
       - make
       - gcc-c++
+      - cppcheck
+      - libasan
+      - perf
       - SFCGAL
       - CGAL-devel
       - eigen3-devel
