@@ -13,6 +13,12 @@
     key: /org/gnome/desktop/wm/preferences/button-layout
     value: "'appmenu:minimize,maximize,close'"
 
+# Mouse
+- name: Enable middle click paste
+  dconf:
+    key: /org/gnome/desktop/interface/gtk-enable-primary-paste
+    value: "true"
+
 # Configure extensions
 - name: Enable shell extensions
   dconf:
